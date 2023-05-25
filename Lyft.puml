@@ -1,0 +1,76 @@
+@startuml
+
+Car <|--model
+model <|-- Calliope
+model <|-- Glissade
+model <|-- Palindrome
+model <|-- Rorschach
+model <|-- Thovex
+
+enum Engine {
+Capulet
+--
++needs_service()
+-After every 30000
+ miles travelled
+==
+Sternman
+--
++needs_service()
+-When warning light is on
+==
+Willoughby
+--
++needs_service()
+-After every 60000
+ miles travelled
+}
+
+enum Battery {
+Spindler
+--
++needs_service()
+-After 2 years
+==
+Nubbin
+--
++needs_service()
+-After 4 years
+}
+
+class Car {
++needs_service()
+}
+
+class model {
+{field} engine
+--
+{field} battery
+}
+
+class Calliope {
+{engine} Capulet
+{battery} Spindler
+}
+
+class Glissade {
+{engine} Willoughby
+{battery} Spindler
+}
+
+class Palindrome {
+{engine} Sternman
+{battery} Nubbin
+}
+
+class Rorschach {
+{engine} Willoughby
+{battery} Nubbin
+}
+
+class Thovex {
+{engine} Capulet
+{battery} Nubbin
+}
+
+@enduml
